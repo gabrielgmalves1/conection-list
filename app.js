@@ -1,6 +1,3 @@
-// filepath: vscode-vfs://github/gabrielgmalves1/conection-list/app.js
-// Simple Kanban-like board with columns and cards, using SortableJS and Prism.js
-
 const board = document.getElementById('board');
 const addColumnBtn = document.getElementById('add-column-btn');
 const cardModal = document.getElementById('card-modal');
@@ -13,7 +10,6 @@ let columns = JSON.parse(localStorage.getItem('columns')) || [];
 let editingCard = null;
 let editingColumnId = null;
 
-// Utility functions
 function saveToStorage() {
   localStorage.setItem('columns', JSON.stringify(columns));
 }
@@ -25,7 +21,6 @@ function renderBoard() {
     columnEl.className = 'column';
     columnEl.dataset.colId = col.id;
 
-    // Column header
     const header = document.createElement('div');
     header.className = 'column-header';
 
@@ -48,7 +43,6 @@ function renderBoard() {
     header.appendChild(title);
     header.appendChild(delColBtn);
 
-    // Cards container
     const cardsContainer = document.createElement('div');
     cardsContainer.className = 'cards-container';
     cardsContainer.id = `col-${col.id}`;
@@ -65,7 +59,6 @@ function renderBoard() {
       cardQuery.className = 'card-query language-sql';
       cardQuery.innerHTML = `<code class="language-sql">${Prism.highlight(card.query, Prism.languages.sql, 'sql')}</code>`;
 
-      // Card actions
       const actions = document.createElement('div');
       actions.className = 'card-actions';
 
@@ -98,7 +91,6 @@ function renderBoard() {
       cardsContainer.appendChild(cardEl);
     });
 
-    // Add card button
     const addCardBtn = document.createElement('button');
     addCardBtn.textContent = '+ Add Query';
     addCardBtn.onclick = () => openCardModal(col.id);
@@ -109,7 +101,6 @@ function renderBoard() {
 
     board.appendChild(columnEl);
 
-    // Enable drag-and-drop for cards
     new Sortable(cardsContainer, {
       group: 'cards',
       animation: 150,
@@ -127,7 +118,6 @@ function renderBoard() {
   });
 }
 
-// Modal logic
 function openCardModal(colId, cardIdx = null) {
   editingColumnId = colId;
   editingCard = cardIdx;
@@ -169,7 +159,6 @@ window.onclick = (e) => {
   if (e.target === cardModal) closeCardModal();
 };
 
-// Add column
 addColumnBtn.onclick = () => {
   const id = Date.now().toString();
   columns.push({ id, title: 'New Column', cards: [] });
@@ -177,4 +166,5 @@ addColumnBtn.onclick = () => {
   renderBoard();
 };
 
-// Initial
+// Initial render
+renderBoard();
