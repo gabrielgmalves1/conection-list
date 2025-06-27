@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Postgres Query Notebook</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>Postgres Query Notebook</h1>
+    <button id="add-column-btn">+ Add Column</button>
+  </header>
+  <main id="board">
+  </main>
+
+  <div id="card-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <input type="text" id="card-title" placeholder="Query Title" />
+      <textarea id="card-query" placeholder="Write your SQL query here..."></textarea>
+      <button id="save-card-btn">Save</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
