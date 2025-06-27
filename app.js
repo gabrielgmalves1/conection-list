@@ -92,7 +92,7 @@ function renderBoard() {
     });
 
     const addCardBtn = document.createElement('button');
-    addCardBtn.textContent = '+ Add Query';
+    addCardBtn.textContent = '+ Adicionar Query';
     addCardBtn.onclick = () => openCardModal(col.id);
 
     columnEl.appendChild(header);
@@ -161,10 +161,9 @@ window.onclick = (e) => {
 
 addColumnBtn.onclick = () => {
   const id = Date.now().toString();
-  columns.push({ id, title: 'New Column', cards: [] });
+  columns.push({ id, title: '', cards: [] });
   saveToStorage();
   renderBoard();
 };
 
-// Initial render
 renderBoard();
